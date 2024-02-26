@@ -1,3 +1,6 @@
+<?php include('../config/dbconfig.php'); ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
