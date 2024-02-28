@@ -7,11 +7,24 @@ $fetch1 = mysqli_fetch_assoc($match1);
 if (password_verify($password, $fetch1['password'])) {
     // Password is correct
     if(!empty($fetch1)){
-        session_start();
-        $_SESSION['email']=$_POST['email'];
-        $_SESSION['role']='Candidate';
-        $_SESSION['successmsg']="1";
-        header('location:../candidate/dashboard');
+        if($fetch1['user_type'] == 1)
+        {
+            session_start();
+            $_SESSION['email']=$_POST['email'];
+            $_SESSION['name']=$fetch1['fname']. ' ' .$fetch1['lname'];
+            $_SESSION['role']='Company';
+            $_SESSION['successmsg']="1";
+            header('location:../company/dashboard');
+        }
+        elseif($fetch1['user_type'] == 0)
+        {
+            session_start();
+            $_SESSION['email']=$_POST['email'];
+            $_SESSION['name']=$fetch1['fname']. ' ' .$fetch1['lname'];
+            $_SESSION['role']='Candidate';
+            $_SESSION['successmsg']="1";
+            header('location:../candidate/dashboard');
+        }
     }else{
         session_start();
         $_SESSION['successmsg']="0";

@@ -1,4 +1,13 @@
-<?php include('layout/header.php');?>
+<?php
+session_start();
+if($_SESSION != [])
+{
+    header('location:../candidate/dashboard');
+}
+?>
+<?php include('layout/header.php');
+?>
+
 
 <div class="login-area mb-120" style="padding-top:20px;">
     <div class="container">

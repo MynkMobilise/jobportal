@@ -11,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
     // Validate form data (for example, check if fields are not empty)
-
     if( $_POST["password"] == '' || $_POST["email"] == '')
     {
         echo "Please Enter Required Fields";
@@ -21,9 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if($_POST["is_company"] == 1)
         {
             // SQL query to insert data
-            $sql = "INSERT INTO users (fname, lname , email , password,user_type,cmpnyname) VALUES ('$firstname1','$lastname1', '$email','$hashedPassword',1,$cmpnyName)";
+            $sql = "INSERT INTO users (fname, lname , email , password,user_type,cmpnyname) VALUES ('$firstname1','$lastname1', '$email','$hashedPassword',1,'$cmpnyName')";
             $msg = "You Are Successfully Registered As Company";
-            header('location:../login');
         }
         else
         {
@@ -32,10 +30,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $msg = "You Are Successfully Registered As Candidate";
             header('location:../login');
         }
-        
         // Check if the query is executed successfully
         if ($conn->query($sql) === TRUE) {
             echo $msg;
+            header('location:../login');
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
             header('location:../register');
