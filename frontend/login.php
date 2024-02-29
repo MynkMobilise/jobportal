@@ -38,6 +38,7 @@ if($_SESSION != [])
 
                                 </div>
                             </div>
+                            <div class="col-lg-12"></div>
                             <div class="col-lg-12">
                                 <div class="form-inner">
                                     <button class="primry-btn-2" type="submit">LogIn</button>

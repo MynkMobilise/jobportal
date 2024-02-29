@@ -18,14 +18,23 @@ $fetch = mysqli_fetch_assoc($sql);
             <div class="section-title">
                 <h5>My Profile </h5>
             </div>
-            <form action="auth/update_cand_process.php" method="post" class="profile-form">
+            <form action="config/update_user_process.php" method="post" class="profile-form">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-inner mb-25">
                             <label>First Name*</label>
                             <div class="input-area">
                                 <img src="assets/images/icon/user-2.svg" alt>
-                                <input type="text" value="<?php echo $fetch['fname'] ?>" placeholder="Mr. Robert">
+                                <input type="text" name="fname" value="<?php echo $fetch['fname'] ?>" placeholder="Mr. Robert">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-inner mb-25">
+                            <label>Last Name*</label>
+                            <div class="input-area">
+                                <img src="assets/images/icon/user-2.svg" alt>
+                                <input type="text" name="lname" value="<?php echo $fetch['lname'] ?>" placeholder="Last name">
                             </div>
                         </div>
                     </div>
@@ -34,7 +43,7 @@ $fetch = mysqli_fetch_assoc($sql);
                             <label>Your Age*</label>
                             <div class="input-area">
                                 <img src="assets/images/icon/clock-2.svg" alt>
-                                <input type="text" value="<?php echo $fetch['age'] ?>" placeholder="21 Years">
+                                <input type="text" name="age" value="<?php echo $fetch['age'] ?>" placeholder="21 Years">
                             </div>
                         </div>
                     </div>
@@ -43,7 +52,7 @@ $fetch = mysqli_fetch_assoc($sql);
                             <label>Current Location*</label>
                             <div class="input-area">
                                 <img src="assets/images/icon/map-2.svg" alt>
-                                <input type="text" placeholder="Mirpur, Dhaka">
+                                <input type="text" name="curr_loc" placeholder="Mirpur, Dhaka">
                             </div>
                         </div>
                     </div>
@@ -52,7 +61,7 @@ $fetch = mysqli_fetch_assoc($sql);
                             <label>Phone Number*</label>
                             <div class="input-area">
                                 <img src="assets/images/icon/phone-2.svg" alt>
-                                <input type="text" value="<?php echo $fetch['phone'] ?>" placeholder="+880-17 *** *** **">
+                                <input type="text" name="phone" value="<?php echo $fetch['phone'] ?>" placeholder="+880-17 *** *** **">
                             </div>
                         </div>
                     </div>
@@ -61,7 +70,7 @@ $fetch = mysqli_fetch_assoc($sql);
                             <label>Email*</label>
                             <div class="input-area">
                                 <img src="assets/images/icon/email-2.svg" alt>
-                                <input type="email" value="<?php echo $fetch['email'] ?>" placeholder="info@example.com">
+                                <input type="email" name="email" value="<?php echo $fetch['email'] ?>" placeholder="info@example.com">
                             </div>
                         </div>
                     </div>
@@ -79,7 +88,7 @@ $fetch = mysqli_fetch_assoc($sql);
                             <label>Current Job Place*</label>
                             <div class="input-area">
                                 <img src="assets/images/icon/company-2.svg" alt>
-                                <input type="text" value="<?php echo $fetch['curr_job'] ?>" placeholder="Company Name">
+                                <input type="text" name="curr_job" value="<?php echo $fetch['curr_job'] ?>" placeholder="Company Name">
                             </div>
                         </div>
                     </div>
@@ -88,7 +97,7 @@ $fetch = mysqli_fetch_assoc($sql);
                             <label>Designation*</label>
                             <div class="input-area">
                                 <img src="assets/images/icon/designation-2.svg" alt>
-                                <input type="text" value="<?php echo $fetch['designation'] ?>" placeholder="UI/UX Engineer">
+                                <input type="text" name="designation" value="<?php echo $fetch['designation'] ?>" placeholder="UI/UX Engineer">
                             </div>
                         </div>
                     </div>
@@ -97,13 +106,13 @@ $fetch = mysqli_fetch_assoc($sql);
                             <label>Qualification*</label>
                             <div class="input-area">
                                 <img src="assets/images/icon/qualification-2.svg" alt>
-                                <select class="select1">
+                                <select class="select1" name="qual">
                                     <option selected><?php echo $fetch['qual'] ?></option>
-                                    <option value="0">Bachelor Degree in CSE</option>
-                                    <option value="1">IGCSE</option>
-                                    <option value="2">AS</option>
-                                    <option value="4">A Level</option>
-                                    <option value="5">Matriculated</option>
+                                    <option value="Bachelor Degree in CSE">Bachelor Degree in CSE</option>
+                                    <option value="IGCSE">IGCSE</option>
+                                    <option value="AS">AS</option>
+                                    <option value="A Level">A Level</option>
+                                    <option value="Matriculated">Matriculated</option>
                                 </select>
                             </div>
                         </div>
@@ -113,11 +122,12 @@ $fetch = mysqli_fetch_assoc($sql);
                             <label>Language*</label>
                             <div class="input-area">
                                 <img src="assets/images/icon/language-2.svg" alt>
-                                <select class="select1">
-                                    <option value="0">Bangla</option>
-                                    <option value="1">English</option>
-                                    <option value="2">Spanish</option>
-                                    <option value="4">Italian</option>
+                                <select class="select1" name="lang">
+                                    <option selected><?php echo $fetch['lang'] ?></option>
+                                    <option value="Bangla">Bangla</option>
+                                    <option value="English">English</option>
+                                    <option value="Spanish">Spanish</option>
+                                    <option value="Italian">Italian</option>
                                 </select>
                             </div>
                         </div>
@@ -125,7 +135,7 @@ $fetch = mysqli_fetch_assoc($sql);
                     <div class="col-md-12">
                         <div class="form-inner mb-50">
                             <label>Description*</label>
-                            <textarea placeholder="Write something about yourself.........."><?php echo $fetch['desc'] ?></textarea>
+                            <textarea placeholder="Write something about yourself.........." name="desc"><?php echo $fetch['desc'] ?></textarea>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -134,7 +144,7 @@ $fetch = mysqli_fetch_assoc($sql);
                         </div>
                     </div>
                 </div>
-                <input type="hidden" value="<?php echo $fetch['cand_id'] ?>">
+                <input type="hidden" value="<?php echo $fetch['cand_id'] ?>" name="cand_id">
             </form>
         </div>
     </div>

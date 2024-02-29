@@ -12,6 +12,7 @@ if (password_verify($password, $fetch1['password'])) {
             session_start();
             $_SESSION['email']=$_POST['email'];
             $_SESSION['name']=$fetch1['fname']. ' ' .$fetch1['lname'];
+            $_SESSION['cmpny_id']=$fetch1['id'];
             $_SESSION['role']='Company';
             $_SESSION['successmsg']="1";
             header('location:../company/dashboard');
@@ -21,6 +22,7 @@ if (password_verify($password, $fetch1['password'])) {
             session_start();
             $_SESSION['email']=$_POST['email'];
             $_SESSION['name']=$fetch1['fname']. ' ' .$fetch1['lname'];
+            $_SESSION['cand_id']=$fetch1['id'];
             $_SESSION['role']='Candidate';
             $_SESSION['successmsg']="1";
             header('location:../candidate/dashboard');
@@ -28,8 +30,9 @@ if (password_verify($password, $fetch1['password'])) {
     }else{
         session_start();
         $_SESSION['successmsg']="0";
-        header('location:../index');
     }
 } else {
+    $_SESSION['successmsg']="Email Or Password Is Incorrect";
+    header('location:../login');
     // Password is incorrect
 }
